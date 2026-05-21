@@ -2,7 +2,7 @@ import {db} from "./firebase.js";
 import {collection,addDoc,getDocs} from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
 
 const saveBtn=document.getElementById("saveBtn");
-const messageDiv=document.getElementById("messages");
+const messagesDiv=document.getElementById("messages");
 
 async function loadMessages(){
     messagesDiv.innerHTML="";
