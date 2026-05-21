@@ -9,7 +9,7 @@ async function loadMessages(){
     const querySnapshot=await getDocs(collection(db,"messages"));
     querySnapshot.forEach((doc)=>{
         const data=doc.data();
-        messagesDiv.innerHTML+='<div class="message"><h3>${data.name}</h3><p>${data.message}</p></div>';
+        messagesDiv.innerHTML+=`<div class="message"><h3>${data.name}</h3><p>${data.message}</p></div>`;
     });
 }
 
