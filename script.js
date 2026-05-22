@@ -1,7 +1,7 @@
 import {db} from "./firebase.js";
 import {collection,addDoc,getDocs,
         deleteDoc,updateDoc,doc,
-        serverTimestamp
+        serverTimestamp,query,orderBy
 } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
 
 const saveBtn=document.getElementById("saveBtn");
@@ -9,7 +9,7 @@ const messagesDiv=document.getElementById("messages");
 
 async function loadMessages(){
     messagesDiv.innerHTML="";
-    const querySnapshot=await getDocs(collection(db,"messages"));
+    const querySnapshot=await getDocs(query(collection(db,"messages"),orderBy("createdAt","desc")));
     querySnapshot.forEach((doc)=>{
         const data=doc.data();
         messagesDiv.innerHTML+=`
@@ -23,6 +23,7 @@ async function loadMessages(){
             </div>
         `;
     });
+    document.getElementById("counter").innerHTML=`Total messages: ${querySnapshot.size}`;
 }
 
 saveBtn.addEventListener("click",async()=>{

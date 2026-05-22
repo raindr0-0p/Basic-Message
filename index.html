@@ -7,11 +7,23 @@
 <body>
     <h1>Message Board</h1>
 
-    <input type="text" id="name" placeholder="Enter name">
-    <input type="text" id="message" placeholder="Enter message">
-    <button id="saveBtn">Save</button>
+    <div id="messageInput">
+        <h2>Enter your message</h2>
+        <input type="text" id="name" placeholder="Enter name">
+        <input type="text" id="message" placeholder="Enter message">
+        <button id="saveBtn">Save</button>
+    </div>
 
-    <div id="messages"></div>
+    <div id="messageBox">
+        <div id="messageTopBar">
+            <h2>Messages</h2>
+            <p id="counter"></p>
+        </div>
+        <div id="messageArea">
+            <div id="messages"></div>
+        </div>
+    </div>
+    
     <script type="module" src="script.js"></script>
 </body>
 </html>
