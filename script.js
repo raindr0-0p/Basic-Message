@@ -1,6 +1,7 @@
 import {db} from "./firebase.js";
 import {collection,addDoc,getDocs,
-        deleteDoc,updateDoc,doc
+        deleteDoc,updateDoc,doc,
+        serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
 
 const saveBtn=document.getElementById("saveBtn");
@@ -13,9 +14,9 @@ async function loadMessages(){
         const data=doc.data();
         messagesDiv.innerHTML+=`
             <div class="message">
-                <h3>${data.name}</h3>
+                <h3>${data.name}:</h3>
                 <p>${data.message}</p>
-                <small>${data.createdAt.toLocaleString()}</small>
+                <small>${data.createdAt?data.createdAt.toDate():"No timestamp"}</small>
                 <br><br>
                 <button onclick="deleteMessage('${doc.id}')">Delete</button>
                 <button onclick="editMessage('${doc.id}')">Edit</button>
@@ -25,24 +26,28 @@ async function loadMessages(){
 }
 
 saveBtn.addEventListener("click",async()=>{
-    const name=document.getElementById("name").value;
-    const message=document.getElementById("message").value;
-    if(name===""||message===""){
+    const name=document.getElementById("name");
+    const message=document.getElementById("message");
+    if(name.value===""||message.value===""){
         alert("Fill all fields");
         return;
     }
     await addDoc(collection(db,"messages"),{
-        name:name,
-        message:message,
-        createdAt:new Date()
+        name:name.value,
+        message:message.value,
+        createdAt:serverTimestamp()
     })
+    name.value="";
+    message.value="";
     loadMessages();
 })
-loadMessages();
 
 window.deleteMessage=async function(id){
-    await deleteDoc(doc(db,"messages",id));
-    loadMessages();
+    if(confirm("Delete this message?")){
+        await deleteDoc(doc(db,"messages",id));
+        alert("Message deleted");
+        loadMessages();
+    }
 }
 
 window.editMessage=async function(id){
@@ -55,3 +60,5 @@ window.editMessage=async function(id){
     });
     loadMessages();
 }
+
+loadMessages();
