@@ -17,6 +17,10 @@ const provider=new GoogleAuthProvider();
 let currentUser=null;
 
 loginBtn.addEventListener("click",async()=>{
+    if(currentUser){
+        alert("Log out first!");
+        return;
+    }
     try{
         await signInWithPopup(auth,provider);
     }catch(error){
@@ -82,7 +86,6 @@ saveBtn.addEventListener("click",async()=>{
         message:escapeHTML(message.value),
         createdAt:serverTimestamp()
     })
-    name.value="";
     message.value="";
 })
 
