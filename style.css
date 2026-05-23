@@ -56,12 +56,10 @@ button{
     border-radius:5px;
     padding:5px;
     margin-top:5px;
-    max-height:20px;
     text-align:center;
 }
 
 #userInfo{
-    margin-top:0px;
     color:rgb(157, 20, 20);
 }
 
