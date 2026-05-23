@@ -26,6 +26,10 @@ loginBtn.addEventListener("click",async()=>{
 })
 
 logoutBtn.addEventListener("click",async()=>{
+    if(!currentUser){
+        alert("You are not logged in!");
+        return;
+    }
     await signOut(auth);
 })
 
