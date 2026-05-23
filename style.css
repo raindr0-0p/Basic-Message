@@ -21,6 +21,7 @@ button{
     cursor:pointer;
     border-radius:10px;
     border-color:rgb(225, 94, 94);
+    color:rgb(157, 20, 20);
 }
 
 .message{
@@ -44,7 +45,33 @@ button{
     max-height:400px;
 }
 
+#loginMenu{
+    background:rgb(185, 97, 97);
+    border-radius:10px;
+    padding:10px;
+}
+
+#userInfoBox{
+    background:rgb(217, 164, 164);
+    border-radius:5px;
+    padding:5px;
+    margin-top:5px;
+    max-height:20px;
+    text-align:center;
+}
+
+#userInfo{
+    margin-top:0px;
+    color:rgb(157, 20, 20);
+}
+
 #messageTopBar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+#topBar{
     display:flex;
     justify-content:space-between;
     align-items:center;

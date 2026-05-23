@@ -5,11 +5,19 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Message Board</h1>
+    <div id="topBar">
+        <h1>Message Board</h1>
+        <div id="loginMenu">
+            <button id="loginBtn">Sign in with Google</button>
+            <button id="logoutBtn">Logout</button>
+            <div id="userInfoBox">
+                <p id="userInfo"></p>
+            </div>
+        </div>
+    </div>
 
     <div id="messageInput">
         <h2>Enter your message</h2>
-        <input type="text" id="name" placeholder="Enter name">
         <input type="text" id="message" placeholder="Enter message">
         <button id="saveBtn">Save</button>
     </div>
