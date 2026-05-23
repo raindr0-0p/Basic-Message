@@ -36,9 +36,9 @@ logoutBtn.addEventListener("click",async()=>{
 onAuthStateChanged(auth,(user)=>{
     if(user){
         currentUser=user;
-        userInfo.innerHTML=`Logged in
+        userInfo.innerHTML=`Logged in as
                             <br>
-                            ${user.displayName}`;
+                            ${user.displayName.length>24?user.displayName.slice(0,21)+"...":user.displayName}`;
     }else{
         currentUser=null;
         userInfo.innerHTML=`Not logged in`;
